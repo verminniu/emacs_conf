@@ -5,6 +5,27 @@
       tab-width 4                       ; default to 4 visible spaces to display a tab
       )
 
+;; add .inl  to c++mode
+(add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode))
+
+;;不产生备份文件
+(setq make-backup-files nil)
+;;不生成临时文件
+(setq-default make-backup-files nil)
+
+;;使用emacs内嵌的功能：
+(require 'electric)
+;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
+(electric-indent-mode t)
+;;系统本身内置的智能自动补全括号
+(electric-pair-mode t)
+;;特定条件下插入新行
+;(electric-layout-mode t)
+
+;; 修改中文字体
+(set-fontset-font "fontset-default"
+                  'symbol (font-spec :family "Symbola"))
+
 (add-hook 'sh-mode-hook (lambda ()
                           (setq tab-width 4)))
 

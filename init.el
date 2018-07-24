@@ -29,14 +29,22 @@
 
 (require 'setup-editing)
 
-;; sr-speedbar
-(require 'sr-speedbar)
-(setq sr-speedbar-right-side nil)
-(setq sr-speedbar-width 35)
-(setq dframe-update-speed t)
-(global-set-key (kbd "<f5>") (lambda()
-          (interactive)
-          (sr-speedbar-toggle)))
+;;;; sr-speedbar
+;;(require 'sr-speedbar)
+;;(setq sr-speedbar-right-side nil)
+;;(setq sr-speedbar-width 35)
+;;(setq dframe-update-speed t)
+;;(global-set-key (kbd "<f5>") (lambda()
+;;          (interactive)
+;;          (sr-speedbar-toggle)))
+
+(global-set-key [f5] 'helm-imenu)
+
+;; neotree
+(setq projectile-switch-project-action 'neotree-projectile-action)
+(setq neo-show-hidden-files nil)
+(setq neo-smart-open t)
+(global-set-key [f2] 'neotree-toggle)
 
 ;; auto save
 (require 'auto-save)
@@ -56,11 +64,7 @@
 ;; use cquery
 (require 'setup-cquery)
 
-;; function-args
-;; (require 'function-args)
-;; (fa-config-default)
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

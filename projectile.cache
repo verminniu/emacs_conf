@@ -1,0 +1,3 @@
+#s(hash-table size 65 test equal rehash-size 1.5 rehash-threshold 0.8125 data ("e:/svn/core_trans_check_V3.0D0040/" ("source/save_check.cpp" "include/cc_db_config.h" "source/cc_db_config.cpp" "source/makefile" "source/rollback_check.cpp" "source/TinyXmlHelp.cpp" "include/sqlapi.h" "source/config.cpp" "include/sys_error.h" "source/sqlapi.cpp" "include/check_result.h" "source/dst_check.cpp" "include/config.h" "include/data_set.h" "source/error_type_count.cpp" "source/data_set.inl" "source/core_trans_check.cpp" "source/s" "source/core_trans_check.cpp~" "source/single_b2c_check.cpp" "'svn' 不是内部或外部命令，也不是可运行的程序
+或批处理文件。
+")))

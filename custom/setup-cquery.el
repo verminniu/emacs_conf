@@ -1,5 +1,19 @@
 (require 'cquery)
 
+(use-package company-lsp
+  :defer nil
+  :init
+  (setq company-quickhelp-delay 0)
+  ;; Language servers have better idea filtering and sorting,
+  ;; don't filter results on the client side.
+  (setq company-transformers nil)
+  (setq company-lsp-async t)
+  (setq company-lsp-cache-candidates nil)
+
+  (add-to-list 'company-backends 'company-lsp)
+  (add-hook 'c-mode-common-hook 'company-lsp)
+)
+
 (setq cquery-executable "D:/code_tools/cquery/build/Release/bin/cquery.exe")
 ;; ;; Arch Linux aur/cquery-git aur/cquery
 ;; (setq cquery-executable "/usr/bin/cquery")
@@ -26,43 +40,42 @@
 
 (use-package cquery
   :commands lsp-cquery-enable
-  :init (add-hook 'c-mode-common-hook #'cquery//enable)
-        (add-hook 'c-mode-hook #'cquery//enable)
-        (add-hook 'c++-mode-hook #'cquery//enable))
+  :init (add-hook 'c-mode-common-hook #'cquery//enable))
 ;; Also see lsp-project-whitelist lsp-project-blacklist cquery-root-matchers
-
-(use-package company-lsp
-  :defer t
-  :init
-  (setq company-quickhelp-delay 0)
-  ;; Language servers have better idea filtering and sorting,
-  ;; don't filter results on the client side.
-  (setq company-transformers nil
-        company-lsp-async t
-        company-lsp-cache-candidates nil)
-
-  (add-to-list 'company-backends 'company-lsp)
-  (add-hook 'c-mode-common-hook 'company-lsp)
-)
-
-(setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
-(setq cquery-extra-init-params '(:completion (:detailedLabel t)))
 
 (require 'helm-xref)
 (setq xref-show-xrefs-function 'helm-xref-show-xrefs)
 
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
-(add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
 
-;;(define-key evil-normal-state-map (kbd "C-p") 'lsp-ui-peek-jump-forward)
-;;(define-key evil-normal-state-map (kbd "C-t") 'lsp-ui-peek-jump-backward)
-
 (setq cquery-sem-highlight-method 'font-lock)
-;; alternatively, (setq cquery-sem-highlight-method 'overlay)
+;;(setq cquery-sem-highlight-method 'overlay)
 
 ;; For rainbow semantic highlighting
 (cquery-use-default-rainbow-sem-highlight)
+
+(define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+
+;;(cquery-xref-find-custom "$cquery/base")
+;;(cquery-xref-find-custom "$cquery/callers")
+;;(cquery-xref-find-custom "$cquery/derived")
+;;(cquery-xref-find-custom "$cquery/vars")
+
+;;;; Alternatively, use lsp-ui-peek interface
+;;(lsp-ui-peek-find-custom 'base "$cquery/base")
+;;(lsp-ui-peek-find-custom 'callers "$cquery/callers")
+;;(lsp-ui-peek-find-custom 'random "$cquery/random") ;; jump to a random declaration
+
+(setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
+(setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
+
+;;(cquery-call-hierarchy nil) ; caller hierarchy
+;;(cquery-call-hierarchy t) ; callee hierarchy
+
+(setq company-transformers nil company-lsp-async t company-lsp-cache-candidates nil)
+(setq cquery-extra-init-params '(:completion (:detailedLabel t)))
 
 (provide 'setup-cquery)
