@@ -8,6 +8,20 @@
 
 ;; hs-minor-mode for folding source code
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
+
+;; add rainbow bucket
+(define-globalized-minor-mode global-highlight-parentheses-mode
+  highlight-parentheses-mode
+  (lambda ()
+    (highlight-parentheses-mode t)))
+(global-highlight-parentheses-mode t)
+
+;;(require 'mic_paren)
+(paren-activate)
+(add-hook 'c-mode-common-hook
+          (function (lambda ()
+                      (paren-toggle-open-paren-context t))))
+
 ;; Available C style:
 ;; “gnu 1�7: The default style for GNU projects
 ;; “k&r 1�7: What Kernighan and Ritchie, the authors of C used in their book
