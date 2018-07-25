@@ -1,7 +1,7 @@
 (require 'cquery)
 
 (use-package company-lsp
-  :defer nil
+  :defer t
   :init
   (setq company-quickhelp-delay 0)
   ;; Language servers have better idea filtering and sorting,
@@ -10,8 +10,9 @@
   (setq company-lsp-async t)
   (setq company-lsp-cache-candidates nil)
 
-  (add-to-list 'company-backends 'company-lsp)
+;;  (add-to-list 'company-backends 'company-lsp)
   (add-hook 'c-mode-common-hook 'company-lsp)
+  (add-to-list 'company-backends 'company-lsp)
 )
 
 (setq cquery-executable "D:/code_tools/cquery/build/Release/bin/cquery.exe")
