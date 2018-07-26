@@ -23,16 +23,16 @@
                       (paren-toggle-open-paren-context t))))
 
 ;; Available C style:
-;; “gnu 1�7: The default style for GNU projects
-;; “k&r 1�7: What Kernighan and Ritchie, the authors of C used in their book
-;; “bsd 1�7: What BSD developers use, aka “Allman style 1�7 after Eric Allman.
-;; “whitesmith 1�7: Popularized by the examples that came with Whitesmiths C, an early commercial C compiler.
-;; “stroustrup 1�7: What Stroustrup, the author of C++ used in his book
-;; “ellemtel 1�7: Popular C++ coding standards as defined by “Programming in C++, Rules and Recommendations, 1�7 Erik Nyquist and Mats Henricson, Ellemtel
-;; “linux 1�7: What the Linux developers use for kernel development
-;; “python 1�7: What Python developers use for extension modules
-;; “java 1�7: The default style for java-mode (see below)
-;; “user 1�7: When you want to define your own style
+;; “gnu 1�71ￄ1�77: The default style for GNU projects
+;; “k&r 1�71ￄ1�77: What Kernighan and Ritchie, the authors of C used in their book
+;; “bsd 1�71ￄ1�77: What BSD developers use, aka “Allman style 1�71ￄ1�77 after Eric Allman.
+;; “whitesmith 1�71ￄ1�77: Popularized by the examples that came with Whitesmiths C, an early commercial C compiler.
+;; “stroustrup 1�71ￄ1�77: What Stroustrup, the author of C++ used in his book
+;; “ellemtel 1�71ￄ1�77: Popular C++ coding standards as defined by “Programming in C++, Rules and Recommendations, 1�71ￄ1�77 Erik Nyquist and Mats Henricson, Ellemtel
+;; “linux 1�71ￄ1�77: What the Linux developers use for kernel development
+;; “python 1�71ￄ1�77: What Python developers use for extension modules
+;; “java 1�71ￄ1�77: The default style for java-mode (see below)
+;; “user 1�71ￄ1�77: When you want to define your own style
 (setq c-default-style "bsd") ;; set style to "linux"
 
 (use-package cc-mode)

@@ -13,14 +13,33 @@
 ;;不生成临时文件
 (setq-default make-backup-files nil)
 
+(use-package smartparens-config
+    :ensure smartparens
+    :config
+    (progn
+      (show-smartparens-global-mode t)))
+(smartparens-global-mode)   
+;; 针对c++模式如果{ + 换行，自动在补全的}增加;类的结束
+;;(sp-local-pair 'c++-mode "{" "\n\t};") 
+(sp-local-pair 'c++-mode "{" "};" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+
+(defun my-create-newline-and-enter-sexp (&rest _ignored)
+  "Open a new brace or bracket expression, with relevant newlines and indent. "
+  (newline)
+  (indent-according-to-mode)
+  (forward-line -1)
+  (indent-according-to-mode))
+
 ;;使用emacs内嵌的功能：
-(require 'electric)
+;;(require 'electric)
 ;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
-(electric-indent-mode t)
-;;系统本身内置的智能自动补全括号
-(electric-pair-mode t)
-;;特定条件下插入新行
-;(electric-layout-mode t)
+;;(electric-indent-mode t)
+;;;;系统本身内置的智能自动补全括号
+;;(electric-pair-mode t)
+;;;;特定条件下插入新行
+;;(electric-layout-mode t)
+
 
 ;; 修改中文字体
 (set-fontset-font "fontset-default"
