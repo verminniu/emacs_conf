@@ -3,7 +3,7 @@
 
 (require 'package)
 
-;; change tsinghua mirrors 
+;; change tsinghua mirrors
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
@@ -46,11 +46,11 @@
 (setq neo-smart-open t)
 (global-set-key [f2] 'neotree-toggle)
 
-;; auto save
-(require 'auto-save)
-(auto-save-enable)
-(setq auto-save-slient t)
-(setq auto-save-delete-trailing-whitespace t)
+;;;; auto save
+;;(require 'auto-save)
+;;(auto-save-enable)
+;;(setq auto-save-slient t)
+;;(setq auto-save-delete-trailing-whitespace t)
 
 ;; line number
 (require 'display-line-number)

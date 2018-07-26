@@ -12,6 +12,8 @@
 (setq make-backup-files nil)
 ;;不生成临时文件
 (setq-default make-backup-files nil)
+;;保存时自动删除行尾空格
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (use-package smartparens-config
     :ensure smartparens
@@ -30,6 +32,7 @@
   (forward-line -1)
   (indent-according-to-mode))
 
+;;使用smartparen进行智能补全
 ;;使用emacs内嵌的功能：
 ;;(require 'electric)
 ;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突

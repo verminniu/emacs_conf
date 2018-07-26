@@ -44,7 +44,7 @@
 and long sections."
   (interactive "*")
   (beginning-of-line)
-  (save-excursion 
+  (save-excursion
     (save-restriction
       (widen)
       (let ((start (point)))
@@ -69,7 +69,7 @@ and long sections."
                             "  \\brief  \n"
                             "\n"
                             "  <long description>\n"
-                            "\n"  
+                            "\n"
                             "  \\author %s\n"
                             "  \\date   %s\n"
                             "*/\n")
@@ -80,7 +80,7 @@ and long sections."
   "Insert a Doxygen comment for the function at point."
   (interactive "*")
   (beginning-of-line)
-  (save-excursion 
+  (save-excursion
     (save-restriction
       (widen)
       (let ((start (point)))
@@ -144,7 +144,7 @@ and long sections."
       (search-forward "(")
       (let ((bound (point)))
         (goto-char start)
-        (if (re-search-forward 
+        (if (re-search-forward
              (concat
               "\\(virtual \|static \|const \\)*" ; opt. modifiers
               "\\([a-zA-Z0-9_:*]+\\)\\s-+[a-zA-Z0-9_:*]+\\s-*(") ; return type
@@ -152,7 +152,7 @@ and long sections."
             (buffer-substring (match-beginning 2)(match-end 2))
           "void")
         ))))
-        
+
 (defun find-arg-list ()
   "Extract various bits of information from a C or C++ function declaration"
   (interactive "*")
