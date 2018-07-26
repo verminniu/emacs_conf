@@ -19,8 +19,7 @@
     (progn
       (show-smartparens-global-mode t)))
 (smartparens-global-mode)   
-;; 针对c++模式如果{ + 换行，自动在补全的}增加;类的结束
-;;(sp-local-pair 'c++-mode "{" "\n\t};") 
+;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}"
 (sp-local-pair 'c++-mode "{" "};" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 (sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 
