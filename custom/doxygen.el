@@ -51,7 +51,7 @@ and long sections."
         (insert (concat "//! \n"
                         "/*!\n"
                         "  \n"
-                        "*/\n"))
+                        "*/"))
         (let ((end (point)))
           (indent-region start end nil)))))
   (end-of-line))

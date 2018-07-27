@@ -7,6 +7,7 @@
 
 ;; add .inl  to c++mode
 (add-to-list 'auto-mode-alist '("\\.inl\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
 ;;不产生备份文件
 (setq make-backup-files nil)
@@ -15,15 +16,19 @@
 ;;保存时自动删除行尾空格
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; 主动打开彩虹括号
+(rainbow-delimiters-mode-enable)
+
 (use-package smartparens-config
     :ensure smartparens
     :config
     (progn
       (show-smartparens-global-mode t)))
-(smartparens-global-mode)   
-;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}"
-(sp-local-pair 'c++-mode "{" "};" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
-(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+(smartparens-global-mode)
+;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}" 未生效，后面再看
+(sp-local-pair 'c++-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+(sp-local-pair 'c-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+;;(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 
 (defun my-create-newline-and-enter-sexp (&rest _ignored)
   "Open a new brace or bracket expression, with relevant newlines and indent. "
@@ -84,6 +89,13 @@
 (use-package volatile-highlights
   :init
   (volatile-highlights-mode t))
+
+;; use highlight-symbol
+(require 'highlight-symbol)
+(global-set-key [(control f3)] 'highlight-symbol)
+(global-set-key [f3] 'highlight-symbol-next)
+(global-set-key [(shift f3)] 'highlight-symbol-prev)
+(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
 
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree

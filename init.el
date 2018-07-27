@@ -64,7 +64,9 @@
 ;; use cquery
 (require 'setup-cquery)
 
+;; load doxygen and set my name
 (require 'doxygen)
+(setq user-full-name "verminniu")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
