@@ -83,7 +83,12 @@ and long sections."
                    "untitled"))
       (date-string (format-time-string doxygen-date-format))
       (who (user-full-name))
-      (head-def (upcase (replace-regexp-in-string "\\." "_" file-name))))
+      ;;(head-def (upcase (replace-regexp-in-string "\\." "_" file-name)))
+      (head-def (upcase (replace-regexp-in-string "\\." "_"
+                                                  (if  (buffer-file-name)
+                                                  (file-name-nondirectory (buffer-file-name))
+                                                              "untitled"))))
+      )
   (insert (format (concat "/*!\n"
                           "  \\file   %s\n"
                           "  \\brief  \n"
@@ -95,7 +100,7 @@ and long sections."
                           "*/\n\n"
                           "#ifndef __%s__\n"
                           "#define __%s__\n\n"
-                          "#endif")
+                          "#endif\n")
                   file-name who date-string head-def head-def ))))
 
 

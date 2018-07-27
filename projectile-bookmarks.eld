@@ -1,1 +1,1 @@
-("e:/svn/core_trans_check_V3.0D0040/" "e:/my_source/code_wars/" "d:/code_tools/emacs/.emacs.d/" "e:/svn/core_async_server_V3.0D0008/" "c:/Users/verminniu/" "e:/svn/core_async_server_V3.0D0007/" "e:/svn/accnt_source_server_V3.0D0001/")
+("e:/my_source/code_wars/" "d:/code_tools/emacs/.emacs.d/" "e:/svn/core_trans_check_V3.0D0040/" "e:/svn/core_async_server_V3.0D0008/" "c:/Users/verminniu/" "e:/svn/core_async_server_V3.0D0007/" "e:/svn/accnt_source_server_V3.0D0001/")
