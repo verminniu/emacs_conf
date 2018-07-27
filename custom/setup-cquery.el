@@ -11,7 +11,7 @@
   (setq company-lsp-cache-candidates nil)
 
 ;;  (add-to-list 'company-backends 'company-lsp)
-  (add-hook 'c-mode-common-hook 'company-lsp)
+;;  (add-hook 'c-mode-common-hook 'company-lsp)
   (add-to-list 'company-backends 'company-lsp)
 )
 
