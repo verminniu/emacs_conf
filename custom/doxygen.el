@@ -75,6 +75,29 @@ and long sections."
                             "*/\n")
                     file-name who date-string))))
 
+(defun doxygen-insert-headfile-comment ()
+"Insert a Doxygen file comment at point."
+(interactive "*")
+(let ((file-name (if (buffer-file-name)
+                     (file-name-nondirectory (buffer-file-name))
+                   "untitled"))
+      (date-string (format-time-string doxygen-date-format))
+      (who (user-full-name))
+      (head-def (upcase (replace-regexp-in-string "\\." "_" file-name))))
+  (insert (format (concat "/*!\n"
+                          "  \\file   %s\n"
+                          "  \\brief  \n"
+                          "\n"
+                          "  <long description>\n"
+                          "\n"
+                          "  \\author %s\n"
+                          "  \\date   %s\n"
+                          "*/\n\n"
+                          "#ifndef __%s__\n"
+                          "#define __%s__\n\n"
+                          "#endif")
+                  file-name who date-string head-def head-def ))))
+
 
 (defun doxygen-insert-function-comment ()
   "Insert a Doxygen comment for the function at point."
