@@ -1,5 +1,5 @@
-;; 启动切换到svn代码目录下
-(setq default-directory "e:/svn/")
+;;;; 启动切换到svn代码目录下
+;;(setq default-directory "e:/svn/")
 
 (require 'package)
 
@@ -66,7 +66,10 @@
 
 ;; load doxygen and set my name
 (require 'doxygen)
-(setq user-full-name "verminniu")
+;;(setq user-full-name "verminniu")
+
+;; load my config
+(require 'my_config)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.

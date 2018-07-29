@@ -50,7 +50,7 @@
 
 ;; 修改中文字体
 (set-fontset-font "fontset-default"
-                  'symbol (font-spec :family "Symbola"))
+                  'symbol (font-spec :family "微软雅黑"))
 
 (add-hook 'sh-mode-hook (lambda ()
                           (setq tab-width 4)))

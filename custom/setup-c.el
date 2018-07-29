@@ -16,7 +16,7 @@
     (highlight-parentheses-mode t)))
 (global-highlight-parentheses-mode t)
 
-;;(require 'mic_paren)
+(require 'mic-paren)
 (paren-activate)
 (add-hook 'c-mode-common-hook
           (function (lambda ()
