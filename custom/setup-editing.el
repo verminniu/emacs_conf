@@ -19,12 +19,28 @@
 ;; 主动打开彩虹括号
 (rainbow-delimiters-mode-enable)
 
+;; 增加窗口大小调整
+(require 'windsize)
+(windsize-default-keybindings) ; C-S-<left/right/up/down>
+
+(require 'window-numbering)
+(window-numbering-mode 1)
+
+;; 窗口自动编号切换
+(setq window-numbering-assign-func
+      (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+
+;; 平滑滚动
+(require 'smooth-scrolling)
+(smooth-scrolling-mode 1)
+
 (use-package smartparens-config
     :ensure smartparens
     :config
     (progn
       (show-smartparens-global-mode t)))
 (smartparens-global-mode)
+;;(smartparens-global-strict-mode)
 ;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}" 未生效，后面再看
 (sp-local-pair 'c++-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 (sp-local-pair 'c-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
@@ -37,10 +53,9 @@
   (forward-line -1)
   (indent-according-to-mode))
 
-;;使用smartparen进行智能补全
-;;使用emacs内嵌的功能：
+;;;;使用emacs内嵌的功能：
 ;;(require 'electric)
-;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
+;;;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
 ;;(electric-indent-mode t)
 ;;;;系统本身内置的智能自动补全括号
 ;;(electric-pair-mode t)

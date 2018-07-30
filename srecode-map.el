@@ -1,4 +1,4 @@
-;; Object srecode-map
+q;; Object srecode-map
 ;; EIEIO PERSISTENT OBJECT
 (srecode-map "srecode-map"
   :file "srecode-map.el"

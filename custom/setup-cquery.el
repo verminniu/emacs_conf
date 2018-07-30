@@ -51,8 +51,8 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
 
-(setq cquery-sem-highlight-method 'font-lock)
-;;(setq cquery-sem-highlight-method 'overlay)
+;;(setq cquery-sem-highlight-method 'font-lock)
+(setq cquery-sem-highlight-method 'overlay)
 
 ;; For rainbow semantic highlighting
 (cquery-use-default-rainbow-sem-highlight)

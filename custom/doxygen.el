@@ -68,7 +68,6 @@ and long sections."
                             "  \\file   %s\n"
                             "  \\brief  \n"
                             "\n"
-                            "  <long description>\n"
                             "\n"
                             "  \\author %s\n"
                             "  \\date   %s\n"
@@ -93,7 +92,6 @@ and long sections."
                           "  \\file   %s\n"
                           "  \\brief  \n"
                           "\n"
-                          "  <long description>\n"
                           "\n"
                           "  \\author %s\n"
                           "  \\date   %s\n"
@@ -107,6 +105,7 @@ and long sections."
 (defun doxygen-insert-function-comment ()
   "Insert a Doxygen comment for the function at point."
   (interactive "*")
+  ;;(indent-according-to-mode)
   (beginning-of-line)
   (save-excursion
     (save-restriction
@@ -115,7 +114,7 @@ and long sections."
         (let ((args (find-arg-list)))
           (insert (concat "//! \n"
                           "/*!\n"
-                          "  <long-description>\n"
+                          "  \\brief  \n"
                           "\n"))
           (when (cdr (assoc 'args args))
             (dump-arguments (cdr (assoc 'args args))))
