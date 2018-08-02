@@ -19,6 +19,9 @@
 ;; 主动打开彩虹括号
 (rainbow-delimiters-mode-enable)
 
+;; 高亮当前行
+(global-hl-line-mode 1)
+
 ;; 增加窗口大小调整
 (require 'windsize)
 (windsize-default-keybindings) ; C-S-<left/right/up/down>
@@ -45,6 +48,9 @@
 (sp-local-pair 'c++-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 (sp-local-pair 'c-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
 ;;(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+(sp-local-pair 'c++-mode "\'" "\'")
+(sp-local-pair 'c-mode "\'" "\'")
+
 
 (defun my-create-newline-and-enter-sexp (&rest _ignored)
   "Open a new brace or bracket expression, with relevant newlines and indent. "

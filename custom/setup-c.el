@@ -10,6 +10,7 @@
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 
 ;; add rainbow bucket
+(require 'highlight-parentheses)
 (define-globalized-minor-mode global-highlight-parentheses-mode
   highlight-parentheses-mode
   (lambda ()

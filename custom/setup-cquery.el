@@ -22,10 +22,9 @@
 ;; ;; Log file
 (setq cquery-extra-args '("--log-file=D:/code_tools/cquery/build/Release/log/cq.log"))
 
-;; ;; Cache directory, both relative and absolute paths are supported
-;; (setq cquery-cache-dir ".cquery_cached_index")
-;; ;; Initialization options
-;; (setq cquery-extra-init-params '(:cacheFormat "msgpack"))
+;; Cache directory, both relative and absolute paths are supported
+(setq cquery-cache-dir "D:/cquery-cache")
+;; Initialization
 (setq cquery-extra-init-params '(:index (:comments 2) :cacheFormat "msgpack"))
 
 (with-eval-after-load 'projectile
@@ -51,8 +50,8 @@
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
 
-;;(setq cquery-sem-highlight-method 'font-lock)
-(setq cquery-sem-highlight-method 'overlay)
+(setq cquery-sem-highlight-method 'font-lock)
+;;(setq cquery-sem-highlight-method 'overlay)
 
 ;; For rainbow semantic highlighting
 (cquery-use-default-rainbow-sem-highlight)
