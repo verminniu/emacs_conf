@@ -42,13 +42,21 @@
  ;;(define-key c++-mode-map  [(control tab)] 'company-complete)
  )
 
+;; package: which key
+(use-package which-key
+  :init
+  (which-key-mode)
+  )
+
 ;; Package: projectile
 (use-package projectile
   :init
   ;;(projectile-global-mode)
   ;;(projectile-mode)
   (add-hook 'after-init-hook 'projectile-mode)
-  (setq projectile-enable-caching t))
+  (setq projectile-globally-ignored-file-suffixes '(".o" ".a"))
+  (setq projectile-enable-caching t)
+  )
 
 ;; Package zygospore
 (use-package zygospore
@@ -60,5 +68,8 @@
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (windmove-default-keybindings)
+
+(setq max-specpdl-size 5)  ; default is 1000, reduce the backtrace level
+(setq debug-on-error t)    ; now you should get a backtrace
 
 (provide 'setup-general)

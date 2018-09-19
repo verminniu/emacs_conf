@@ -17,10 +17,11 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; 主动打开彩虹括号
-(rainbow-delimiters-mode-enable)
+(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 ;; 高亮当前行
 (global-hl-line-mode 1)
+(set-face-background hl-line-face "gray13")
 
 ;; 增加窗口大小调整
 (require 'windsize)
@@ -28,6 +29,8 @@
 
 (require 'window-numbering)
 (window-numbering-mode 1)
+
+
 
 ;; 窗口自动编号切换
 (setq window-numbering-assign-func
@@ -37,20 +40,22 @@
 (require 'smooth-scrolling)
 (smooth-scrolling-mode 1)
 
-(use-package smartparens-config
-    :ensure smartparens
-    :config
-    (progn
-      (show-smartparens-global-mode t)))
-(smartparens-global-mode)
-;;(smartparens-global-strict-mode)
-;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}" 未生效，后面再看
-(sp-local-pair 'c++-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
-(sp-local-pair 'c-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
-;;(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
-(sp-local-pair 'c++-mode "\'" "\'")
-(sp-local-pair 'c-mode "\'" "\'")
+(require 'unicad)
 
+;;(use-package smartparens-config
+;;    :ensure smartparens
+;;    :config
+;;    (progn
+;;      (show-smartparens-global-mode t)))
+;;(smartparens-global-mode)
+;;(smartparens-global-strict-mode)
+;;;; 针对c++模式如果是类后面的{补全增加"};", 如果是函数，增加"}" 未生效，后面再看
+;;(sp-local-pair 'c++-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+;;(sp-local-pair 'c-mode "{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+;;;;(sp-local-pair 'c++-mode "\)\n{" "}" :post-handlers '((my-create-newline-and-enter-sexp "RET")))
+;;(sp-local-pair 'c++-mode "\'" "\'")
+;;(sp-local-pair 'c-mode "\'" "\'")
+;;
 
 (defun my-create-newline-and-enter-sexp (&rest _ignored)
   "Open a new brace or bracket expression, with relevant newlines and indent. "
@@ -59,19 +64,19 @@
   (forward-line -1)
   (indent-according-to-mode))
 
-;;;;使用emacs内嵌的功能：
-;;(require 'electric)
-;;;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
-;;(electric-indent-mode t)
-;;;;系统本身内置的智能自动补全括号
-;;(electric-pair-mode t)
-;;;;特定条件下插入新行
-;;(electric-layout-mode t)
+;;使用emacs内嵌的功能：
+(require 'electric)
+;;编辑时智能缩进，类似于C-j的效果——这个C-j中，zencoding和electric-pair-mode冲突
+(electric-indent-mode t)
+;;系统本身内置的智能自动补全括号
+(electric-pair-mode t)
+;;特定条件下插入新行
+(electric-layout-mode t)
 
 
 ;; 修改中文字体
-(set-fontset-font "fontset-default"
-                  'symbol (font-spec :family "微软雅黑"))
+;;(set-fontset-font "fontset-default"
+;;                  'symbol (font-spec :family "微软雅黑"))
 
 (add-hook 'sh-mode-hook (lambda ()
                           (setq tab-width 4)))
@@ -113,10 +118,19 @@
 
 ;; use highlight-symbol
 (require 'highlight-symbol)
-(global-set-key [(control f3)] 'highlight-symbol)
-(global-set-key [f3] 'highlight-symbol-next)
-(global-set-key [(shift f3)] 'highlight-symbol-prev)
-(global-set-key [(meta f3)] 'highlight-symbol-query-replace)
+(global-set-key (kbd "M-i") 'highlight-symbol)
+(global-set-key (kbd "M-n") 'highlight-symbol-next)
+(global-set-key (kbd "M-p") 'highlight-symbol-prev)
+(global-set-key (kbd "M-q") 'highlight-symbol-query-replace)
+
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dashboard-items '((recents  . 10)
+                          (bookmarks . 5)
+                          (projects . 5)
+                          (registers . 5)))
+  (dashboard-setup-startup-hook))
 
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree
@@ -170,6 +184,11 @@
   :bind (("C-;" . iedit-mode))
   :init
   (setq iedit-toggle-key-default nil))
+
+(use-package ztree
+    :init
+    (setq ztree-diff-additional-options '("-w"))
+    )
 
 ;; Customized functions
 (defun prelude-move-beginning-of-line (arg)

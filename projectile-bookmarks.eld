@@ -1,1 +1,1 @@
-("d:/code_tools/emacs/.emacs.d/" "e:/my_source/code_wars/" "e:/lib_src/tinyxml/" "e:/svn/core_trans_check_V3.0D0040/" "e:/svn/core_async_server_V3.0D0007/" "e:/svn/core_async_server_V3.0D0008/" "e:/svn/trans_server_V3.0D0066/" "e:/svn/trans_server_V3.0D0066/trans_server/src/admin/" "e:/svn/source_server_V3.0D0081/" "c:/Users/verminniu/" "e:/svn/core_trans_check_V3.0D0034/" "e:/svn/accnt_source_server_V3.0D0001/")
+("~/.emacs.d/" "~/" "~/Documents/svn/source_server_V3.0D0085/source_server/")

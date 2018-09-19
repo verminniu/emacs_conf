@@ -1,4 +1,6 @@
-(require 'cquery)
+(use-package cquery
+  :init
+  )
 
 (use-package company-lsp
   :defer t
@@ -15,15 +17,15 @@
   (add-to-list 'company-backends 'company-lsp)
 )
 
-(setq cquery-executable "D:/code_tools/cquery/build/Release/bin/cquery.exe")
+(setq cquery-executable "cquery")
 ;; ;; Arch Linux aur/cquery-git aur/cquery
 ;; (setq cquery-executable "/usr/bin/cquery")
 
 ;; ;; Log file
-(setq cquery-extra-args '("--log-file=D:/code_tools/cquery/build/Release/log/cq.log"))
+(setq cquery-extra-args '("--log-file=~/.cquery/log/cq.log"))
 
 ;; Cache directory, both relative and absolute paths are supported
-(setq cquery-cache-dir "D:/cquery-cache")
+(setq cquery-cache-dir "~/.cquery/cquery-cache")
 ;; Initialization
 (setq cquery-extra-init-params '(:index (:comments 2) :cacheFormat "msgpack"))
 
@@ -49,15 +51,17 @@
 (require 'lsp-ui)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 (add-hook 'c-mode-common-hook 'flycheck-mode)
+;;(setq lsp-ui-sideline-enable nil)
+(setq lsp-ui-doc-enable nil)
+(define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+;;(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
 (setq cquery-sem-highlight-method 'font-lock)
 ;;(setq cquery-sem-highlight-method 'overlay)
 
 ;; For rainbow semantic highlighting
 (cquery-use-default-rainbow-sem-highlight)
-
-(define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-(define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+;;(setq lsp-highlight-symbol-at-point nil)
 
 ;;(cquery-xref-find-custom "$cquery/base")
 ;;(cquery-xref-find-custom "$cquery/callers")
