@@ -75,6 +75,7 @@
     (global-set-key (kbd "C-x b") 'helm-buffers-list)
     (global-set-key (kbd "C-x C-f") 'helm-find-files)
     (global-set-key (kbd "C-c r") 'helm-recentf)
+    (global-set-key (kbd "C-c n") 'helm-imenu)
     (global-set-key (kbd "C-h SPC") 'helm-all-mark-rings)
     (global-set-key (kbd "C-c h o") 'helm-occur)
     (global-set-key (kbd "C-c h o") 'helm-occur)

@@ -41,8 +41,6 @@
 ;;          (interactive)
 ;;          (sr-speedbar-toggle)))
 
-(global-set-key [f5] 'helm-imenu)
-
 ;; neotree
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (setq neo-show-hidden-files nil)
